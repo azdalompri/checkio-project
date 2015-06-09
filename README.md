@@ -1,0 +1,2 @@
+# checkio-project
+school project 

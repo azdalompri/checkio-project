@@ -1,0 +1,38 @@
+def count_neighbours(grid, row, col):
+    """
+    1st = grid[row+1][col]
+    2nd = grid[row+1][col+1]
+    3rd = grid[row][col+1]
+    4th = grid[row-1][col+1]
+    5th = grid[row-1][col]
+    6th = grid[row-1][col-1]
+    7th = grid[row][col-1]
+    8th = grid[row+1][col-1]"""
+    m = 0 
+    for r,c in ((row+1,col),(row+1,col+1),(row,col+1),(row-1,col+1),
+                (row-1,col),(row-1,col-1),(row,col-1),(row+1,col-1)):
+                    if not (0 <= r < len(grid) and 0 <= c < len(grid[r])):
+                        continue
+                    if grid[r][c] == 1:
+                        m += 1
+    return m
+
+
+if __name__ == '__main__':
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert count_neighbours(((1, 0, 0, 1, 0),
+                             (0, 1, 0, 0, 0),
+                             (0, 0, 1, 0, 1),
+                             (1, 0, 0, 0, 0),
+                             (0, 0, 1, 0, 0),), 1, 2) == 3, "1st example"
+    assert count_neighbours(((1, 0, 0, 1, 0),
+                             (0, 1, 0, 0, 0),
+                             (0, 0, 1, 0, 1),
+                             (1, 0, 0, 0, 0),
+                             (0, 0, 1, 0, 0),), 0, 0) == 1, "2nd example"
+    assert count_neighbours(((1, 1, 1),
+                             (1, 1, 1),
+                             (1, 1, 1),), 0, 2) == 3, "Dense corner"
+    assert count_neighbours(((0, 0, 0),
+                             (0, 1, 0),
+                             (0, 0, 0),), 1, 1) == 0, "Single"

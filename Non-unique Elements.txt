@@ -5,12 +5,8 @@
 def checkio(data): 
     return [i for i in data if data.count(i) > 1]
 
-"""shorter code(quick execusion)"""
+"""shorter code(quick execution)"""
 
-#Some hints
-#You can use list.count(element) method for counting.
-#Create new list with non-unique elements
-#Loop over original list
 
 
 if __name__ == "__main__":
